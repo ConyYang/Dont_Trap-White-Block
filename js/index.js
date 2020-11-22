@@ -26,7 +26,7 @@ function start() {
 
 function init() {
     flag = true;
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         createrow();
     }
 
@@ -35,7 +35,7 @@ function init() {
         judge(ev);
     };
 
-    clock = window.setInterval('move()', 30);
+    clock = window.setInterval('move()', 50);
 }
 
 
@@ -57,7 +57,7 @@ function judge(ev) {
 
 function over() {
     var rows = con.childNodes;
-    if (rows.length == 5 && rows[rows.length - 1].pass !== 1) {
+    if (rows.length == 6 && rows[rows.length - 1].pass !== 1) {
         fail();
     }
     for (let i = 0; i < rows.length; i++) {
@@ -70,11 +70,11 @@ function over() {
 function fail() {
     clearInterval(clock);
     flag = false;
-    confirm('你的最终得分为 ' + parseInt($('score').innerHTML));
+    confirm('Your final score is : ' + parseInt($('score').innerHTML));
     var con = $('con');
     con.innerHTML = '';
     $('score').innerHTML = 0;
-    con.style.top = '-408px';
+    con.style.top = '-510px';
 }
 
 
@@ -85,7 +85,7 @@ function createrow() {
 
     con.appendChild(row);
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         row.appendChild(creatediv(arr[i]));
     }
 
@@ -98,8 +98,8 @@ function createrow() {
 
 
 function creatcell() {
-    var temp = ['cell', 'cell', 'cell', 'cell'];
-    var i = Math.floor(Math.random() * 4);
+    var temp = ['cell', 'cell', 'cell', 'cell', 'cell'];
+    var i = Math.floor(Math.random() * 5);
     temp[i] = 'cell black';
     return temp;
 }
@@ -127,14 +127,14 @@ function move() {
 function speedup() {
     speed += 2;
     if (speed == 20) {
-        alert('你超神了');
+        alert('You are legend!');
     }
 }
 
 
 function delrow() {
     var con = $('con');
-    if (con.childNodes.length == 6) {
+    if (con.childNodes.length == 7) {
         con.removeChild(con.lastChild);
     }
 }
@@ -146,4 +146,10 @@ function score() {
     if (newscore % 10 == 0) {
         speedup();
     }
+}
+
+var audio = new Audio("music");
+
+document.onclick = function() {
+    audio.play();
 }
