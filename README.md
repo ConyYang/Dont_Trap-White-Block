@@ -1,8 +1,10 @@
 # Don't Trap White Block
 This is a small online game which implemented using html, css and javascript.
-### Demo
-When you open index.html in the browser. Initially, you can see a page like this.
 
+### Demo
+![demo](demo/demo.gif)
+
+When you open index.html in the browser. Initially, you can see a page like this.
 #### user case 1
 Click start game button on the bottom of the page to start the game.
 ![Initial panel](demo/demo1.png)
